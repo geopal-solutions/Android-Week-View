@@ -161,15 +161,22 @@ public class WeekViewEvent<K, V> {
         return (int) (mId ^ (mId >>> 32));
     }
 
-    public HashMap<K, V> getCustomWeekViewValueMap() {
+    public HashMap<K, V> getKeyValueHashMap() {
         return mCustomValues;
     }
 
-    public void setCustomWeekViewValueMap(HashMap<K, V> hashMap) {
+    public void putValueInMap(K key,V value) {
+        if(mCustomValues==null){
+            mCustomValues = new HashMap<>();
+        }
+        mCustomValues.put(key,value);
+    }
+
+    public void setKeyValueHashMap(HashMap<K, V> hashMap) {
         mCustomValues = hashMap;
     }
 
-    public V getCustomWeekViewValueByKey(K key) {
+    public V getValueByKey(K key) {
         return mCustomValues.get(key);
     }
 

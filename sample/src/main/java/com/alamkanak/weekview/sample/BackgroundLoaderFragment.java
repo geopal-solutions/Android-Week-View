@@ -224,12 +224,14 @@ public class BackgroundLoaderFragment extends Fragment implements MonthLoader.Mo
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        String key = " "+event.getValueByKey("key");
+        Toast.makeText(getActivity(), "Clicked " + event.getName()+ key, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-        Toast.makeText(getActivity(), "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
+        String key = " "+event.getValueByKey("key");
+        Toast.makeText(getActivity(), "Long pressed event: " + event.getName()+ key, Toast.LENGTH_SHORT).show();
     }
 
     @Override
