@@ -60,171 +60,171 @@ public class WeekView extends View {
 
     private final Context mContext;
 
-    private Paint mTimeTextPaint;
+    protected Paint mTimeTextPaint;
 
-    private float mTimeTextWidth;
+    protected float mTimeTextWidth;
 
-    private float mTimeTextHeight;
+    protected float mTimeTextHeight;
 
-    private Paint mHeaderTextPaint;
+    protected Paint mHeaderTextPaint;
 
-    private float mHeaderTextHeight;
+    protected float mHeaderTextHeight;
 
-    private GestureDetectorCompat mGestureDetector;
+    protected GestureDetectorCompat mGestureDetector;
 
-    private OverScroller mScroller;
+    protected OverScroller mScroller;
 
-    private PointF mCurrentOrigin = new PointF(0f, 0f);
+    protected PointF mCurrentOrigin = new PointF(0f, 0f);
 
-    private Direction mCurrentScrollDirection = Direction.NONE;
+    protected Direction mCurrentScrollDirection = Direction.NONE;
 
-    private Paint mHeaderBackgroundPaint;
+    protected Paint mHeaderBackgroundPaint;
 
-    private float mWidthPerDay;
+    protected float mWidthPerDay;
 
-    private Paint mDayBackgroundPaint;
+    protected Paint mDayBackgroundPaint;
 
-    private Paint mHourSeparatorPaint;
+    protected Paint mHourSeparatorPaint;
 
-    private float mHeaderMarginBottom;
+    protected float mHeaderMarginBottom;
 
-    private Paint mTodayBackgroundPaint;
+    protected Paint mTodayBackgroundPaint;
 
-    private Paint mFutureBackgroundPaint;
+    protected Paint mFutureBackgroundPaint;
 
-    private Paint mPastBackgroundPaint;
+    protected Paint mPastBackgroundPaint;
 
-    private Paint mFutureWeekendBackgroundPaint;
+    protected Paint mFutureWeekendBackgroundPaint;
 
-    private Paint mPastWeekendBackgroundPaint;
+    protected Paint mPastWeekendBackgroundPaint;
 
-    private Paint mNowLinePaint;
+    protected Paint mNowLinePaint;
 
-    private Paint mTodayHeaderTextPaint;
+    protected Paint mTodayHeaderTextPaint;
 
-    private Paint mEventBackgroundPaint;
+    protected Paint mEventBackgroundPaint;
 
-    private float mHeaderColumnWidth;
+    protected float mHeaderColumnWidth;
 
-    private List<EventRect> mEventRects;
+    protected List<EventRect> mEventRects;
 
-    private List<? extends WeekViewEvent> mPreviousPeriodEvents;
+    protected List<? extends WeekViewEvent> mPreviousPeriodEvents;
 
-    private List<? extends WeekViewEvent> mCurrentPeriodEvents;
+    protected List<? extends WeekViewEvent> mCurrentPeriodEvents;
 
-    private List<? extends WeekViewEvent> mNextPeriodEvents;
+    protected List<? extends WeekViewEvent> mNextPeriodEvents;
 
-    private TextPaint mEventTextPaint;
+    protected TextPaint mEventTextPaint;
 
-    private Paint mHeaderColumnBackgroundPaint;
+    protected Paint mHeaderColumnBackgroundPaint;
 
-    private int mFetchedPeriod = -1; // the middle period the calendar has fetched.
+    protected int mFetchedPeriod = -1; // the middle period the calendar has fetched.
 
-    private boolean mRefreshEvents = false;
+    protected boolean mRefreshEvents = false;
 
-    private Direction mCurrentFlingDirection = Direction.NONE;
+    protected Direction mCurrentFlingDirection = Direction.NONE;
 
-    private ScaleGestureDetector mScaleDetector;
+    protected ScaleGestureDetector mScaleDetector;
 
-    private boolean mIsZooming;
+    protected boolean mIsZooming;
 
-    private Calendar mFirstVisibleDay;
+    protected Calendar mFirstVisibleDay;
 
-    private Calendar mLastVisibleDay;
+    protected Calendar mLastVisibleDay;
 
-    private int mDefaultEventColor;
+    protected int mDefaultEventColor;
 
-    private int mMinimumFlingVelocity = 0;
+    protected int mMinimumFlingVelocity = 0;
 
-    private int mScaledTouchSlop = 0;
+    protected int mScaledTouchSlop = 0;
 
     // Attributes and their default values.
-    private int mHourHeight = 50;
+    protected int mHourHeight = 50;
 
-    private int mNewHourHeight = -1;
+    protected int mNewHourHeight = -1;
 
-    private int mMinHourHeight = 0; //no minimum specified (will be dynamic, based on screen)
+    protected int mMinHourHeight = 0; //no minimum specified (will be dynamic, based on screen)
 
-    private int mEffectiveMinHourHeight = mMinHourHeight; //compensates for the fact that you can't keep zooming out.
+    protected int mEffectiveMinHourHeight = mMinHourHeight; //compensates for the fact that you can't keep zooming out.
 
-    private int mMaxHourHeight = 250;
+    protected int mMaxHourHeight = 250;
 
-    private int mColumnGap = 10;
+    protected int mColumnGap = 10;
 
-    private int mFirstDayOfWeek = Calendar.MONDAY;
+    protected int mFirstDayOfWeek = Calendar.MONDAY;
 
-    private int mTextSize = 12;
+    protected int mTextSize = 12;
 
-    private int mHeaderColumnPadding = 10;
+    protected int mHeaderColumnPadding = 10;
 
-    private int mHeaderColumnTextColor = Color.BLACK;
+    protected int mHeaderColumnTextColor = Color.BLACK;
 
-    private int mNumberOfVisibleDays = 3;
+    protected int mNumberOfVisibleDays = 3;
 
-    private int mHeaderRowPadding = 10;
+    protected int mHeaderRowPadding = 10;
 
-    private int mHeaderRowBackgroundColor = Color.WHITE;
+    protected int mHeaderRowBackgroundColor = Color.WHITE;
 
-    private int mDayBackgroundColor = Color.rgb(245, 245, 245);
+    protected int mDayBackgroundColor = Color.rgb(245, 245, 245);
 
-    private int mPastBackgroundColor = Color.rgb(227, 227, 227);
+    protected int mPastBackgroundColor = Color.rgb(227, 227, 227);
 
-    private int mFutureBackgroundColor = Color.rgb(245, 245, 245);
+    protected int mFutureBackgroundColor = Color.rgb(245, 245, 245);
 
-    private int mPastWeekendBackgroundColor = 0;
+    protected int mPastWeekendBackgroundColor = 0;
 
-    private int mFutureWeekendBackgroundColor = 0;
+    protected int mFutureWeekendBackgroundColor = 0;
 
-    private int mNowLineColor = Color.rgb(102, 102, 102);
+    protected int mNowLineColor = Color.rgb(102, 102, 102);
 
-    private int mNowLineThickness = 5;
+    protected int mNowLineThickness = 5;
 
-    private int mHourSeparatorColor = Color.rgb(230, 230, 230);
+    protected int mHourSeparatorColor = Color.rgb(230, 230, 230);
 
-    private int mTodayBackgroundColor = Color.rgb(239, 247, 254);
+    protected int mTodayBackgroundColor = Color.rgb(239, 247, 254);
 
-    private int mHourSeparatorHeight = 2;
+    protected int mHourSeparatorHeight = 2;
 
-    private int mTodayHeaderTextColor = Color.rgb(39, 137, 228);
+    protected int mTodayHeaderTextColor = Color.rgb(39, 137, 228);
 
-    private int mEventTextSize = 12;
+    protected int mEventTextSize = 12;
 
-    private int mEventTextColor = Color.BLACK;
+    protected int mEventTextColor = Color.BLACK;
 
-    private int mEventPadding = 8;
+    protected int mEventPadding = 8;
 
-    private int mHeaderColumnBackgroundColor = Color.WHITE;
+    protected int mHeaderColumnBackgroundColor = Color.WHITE;
 
-    private boolean mIsFirstDraw = true;
+    protected boolean mIsFirstDraw = true;
 
-    private boolean mAreDimensionsInvalid = true;
+    protected boolean mAreDimensionsInvalid = true;
 
     @Deprecated
-    private int mDayNameLength = LENGTH_LONG;
+    protected int mDayNameLength = LENGTH_LONG;
 
-    private int mOverlappingEventGap = 0;
+    protected int mOverlappingEventGap = 0;
 
-    private int mEventMarginVertical = 0;
+    protected int mEventMarginVertical = 0;
 
-    private float mXScrollingSpeed = 1f;
+    protected float mXScrollingSpeed = 1f;
 
-    private Calendar mScrollToDay = null;
+    protected Calendar mScrollToDay = null;
 
-    private double mScrollToHour = -1;
+    protected double mScrollToHour = -1;
 
-    private int mEventCornerRadius = 0;
+    protected int mEventCornerRadius = 0;
 
-    private boolean mShowDistinctWeekendColor = false;
+    protected boolean mShowDistinctWeekendColor = false;
 
-    private boolean mShowNowLine = false;
+    protected boolean mShowNowLine = false;
 
-    private boolean mShowDistinctPastFutureColor = false;
+    protected boolean mShowDistinctPastFutureColor = false;
 
-    private boolean mHorizontalFlingEnabled = true;
+    protected boolean mHorizontalFlingEnabled = true;
 
-    private boolean mVerticalFlingEnabled = true;
+    protected boolean mVerticalFlingEnabled = true;
 
-    private boolean mLoadEventsInView = true;
+    protected boolean mLoadEventsInView = true;
 
     // Listeners.
     private EventClickListener mEventClickListener;
@@ -450,7 +450,7 @@ public class WeekView extends View {
         init();
     }
 
-    private void init() {
+    protected void init() {
         // Scrolling initialization.
         mGestureDetector = new GestureDetectorCompat(mContext, mGestureListener);
         mScroller = new OverScroller(mContext, new FastOutLinearInInterpolator());
@@ -1946,7 +1946,7 @@ public class WeekView extends View {
      * @param dayTwo The second day.
      * @return Whether the times are on the same day.
      */
-    private boolean isSameDay(Calendar dayOne, Calendar dayTwo) {
+    protected boolean isSameDay(Calendar dayOne, Calendar dayTwo) {
         return dayOne.get(Calendar.YEAR) == dayTwo.get(Calendar.YEAR) && dayOne.get(Calendar.DAY_OF_YEAR) == dayTwo.get(Calendar.DAY_OF_YEAR);
     }
 
